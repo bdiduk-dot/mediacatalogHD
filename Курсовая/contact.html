@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти - Медіа-каталог</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-film"></i>
+                    <span>Медіа-каталог</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Головна</span>
+                    </a>
+                    <a href="catalog.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Каталог</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Про систему</span>
+                    </a>
+                    <a href="contact.html" class="nav-link active">
+                        <i class="fas fa-envelope"></i>
+                        <span>Контакти</span>
+                    </a>
+                    <a href="help.html" class="nav-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Допомога</span>
+                    </a>
+                    <a href="profile.html" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Профіль</span>
+                    </a>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Зв'яжіться з нами</h1>
+                <p class="hero-subtitle">Ми завжди раді почути ваші думки, пропозиції та відповісти на будь-які питання</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-title">Електронна пошта</h3>
+                        <div class="contact-details">
+                            <p>Напишіть нам на пошту - ми відповімо протягом 24 годин</p>
+                            <a href="mailto:info@mediacatalog.com">b.diduk@e-u.edu.ua</a>
+                            <div class="contact-meta">
+                                <i class="fas fa-clock"></i>
+                                Відповідаємо швидко
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 class="contact-title">Телефон</h3>
+                        <div class="contact-details">
+                            <p>Дзвоніть нам у робочий час</p>
+                            <a href="tel:+380001234567">+38 (099) 742-82-85</a>
+                            <div class="contact-meta">
+                                <i class="fas fa-calendar"></i>
+                                Пн-Пт: 9:00-18:00
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="contact-title">Адреса</h3>
+                        <div class="contact-details">
+                            <p>Наш офіс у Києві</p>
+                            <a href="https://maps.google.com" target="_blank">бульвар Академіка Вернадського, 16В</a>
+                            <div class="contact-meta">
+                                <i class="fas fa-user-clock"></i>
+                                За попереднім записом
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3 class="contact-title">Соціальні мережі</h3>
+                        <div class="contact-details">
+                            <p>Слідкуйте за нами в соціальних мережах</p>
+                            <div class="social-icons">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-telegram"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h3 class="form-title">Надіслати повідомлення</h3>
+                        <p class="form-subtitle">Заповніть форму нижче і ми зв'яжемося з вами</p>
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Ваше ім'я *</label>
+                            <input type="text" id="name" class="form-input" placeholder="Введіть ваше ім'я" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Електронна пошта *</label>
+                            <input type="email" id="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category" class="form-label">Категорія запиту</label>
+                            <select id="category" class="form-select">
+                                <option value="">Оберіть категорію</option>
+                                <option value="support">Технічна підтримка</option>
+                                <option value="suggestion">Пропозиція</option>
+                                <option value="bug">Повідомлення про проблему</option>
+                                <option value="cooperation">Співпраця</option>
+                                <option value="other">Інше</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="importance" class="form-label">Важливість</label>
+                            <select id="importance" class="form-select">
+                                <option value="low">Звичайний запит</option>
+                                <option value="medium">Важливо</option>
+                                <option value="high">Дуже важливо</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Повідомлення *</label>
+                            <textarea id="message" class="form-textarea" placeholder="Опишіть ваше питання або пропозицію..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <i class="fas fa-paper-plane"></i>
+                            Надіслати повідомлення
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Де ми знаходимось</h2>
+                <p class="section-subtitle">Завітайте до нашого офісу в зручний для вас час</p>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder" id="mapInteractive">
+                    <div class="map-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="map-title">Наш офіс у Києві</h3>
+                    <p class="map-description">Київ, вул. Святошинська, 12</p>
+                    <p class="map-description map-hint">Натисніть для перегляду на карті</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Часті запитання</h2>
+                <p class="section-subtitle">Відповіді на найпопулярніші питання</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Як швидко ви відповідаєте на повідомлення?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ми намагаємось відповідати на всі повідомлення протягом 24 годин у робочі дні. Найважливіші запити обробляються пріоритетно.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Чи можна запропонувати нову функцію?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Так! Ми завжди раді новим ідеям. Оберіть категорію "Пропозиція" у формі зворотного зв'язку та детально опишіть вашу ідею.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Як повідомити про проблему?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Якщо ви виявили проблему, оберіть категорію "Повідомлення про проблему" і детально опишіть, що саме не працює.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Чи можлива співпраця?</span>
+                        <i class="fas fa-chevron-down faq-toggle"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Так, ми відкриті до співпраці. Зв'яжіться з нами через форму, обравши категорію "Співпраця".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Медіа-каталог</h4>
+                    <p>Сучасна платформа для управління вашою медіа-бібліотекою</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <a href="index.html">Головна</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">Про систему</a>
+                    <a href="contact.html">Контакти</a>
+                    <a href="help.html">Допомога</a>
+                    <a href="profile.html">Профіль</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <a href="mailto:info@mediacatalog.com">b.diduk@e-u.edu.ua</a>
+                    <a href="tel:+380001234567">+38 (099) 742-82-85</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Медіа-каталог. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/contact.js"></script>
+</body>
+</html>
