@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Про систему - Медіа-каталог</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-film"></i>
+                    <span>Медіа-каталог</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Головна</span>
+                    </a>
+                    <a href="catalog.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Каталог</span>
+                    </a>
+                    <a href="about.html" class="nav-link active">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Про систему</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Контакти</span>
+                    </a>
+                    <a href="help.html" class="nav-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Допомога</span>
+                    </a>
+                    <a href="profile.html" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Профіль</span>
+                    </a>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Медіа-каталог</h1>
+                <p class="hero-subtitle">Сучасна платформа для організації ваших фільмів та книг</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content">
+                    <div class="section-header">
+                        <h2 class="section-title">Наша місія</h2>
+                        <p class="section-subtitle">Створюємо найкращий досвід для організації ваших медіа-колекцій</p>
+                    </div>
+                    
+                    <div class="section-content">
+                        <p>Медіа-каталог - це інструмент для всіх любителів фільмів та книг. Ми робимо управління колекцією простим та ефективним.</p>
+                        
+                        <p style="margin-top: 1.5rem;">Платформа поєднує в собі:</p>
+                        <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-secondary);">
+                            <li>Інтуїтивний інтерфейс</li>
+                            <li>Потужний пошук та фільтри</li>
+                            <li>Автоматичне заповнення через API</li>
+                            <li>Голосовий пошук</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mission-image">
+                    <i class="fas fa-film"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title">Ключові функції</h2>
+                <p class="section-subtitle">Все необхідне для ідеальної організації</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">Розумний пошук</h3>
+                    <p class="feature-description">Швидкий пошук з фільтрами та голосовим управлінням</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3 class="feature-title">Легке додавання</h3>
+                    <p class="feature-description">Додавайте медіа вручну або через API автоматизацію</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Адаптивний дизайн</h3>
+                    <p class="feature-description">Працює ідеально на всіх пристроях та екранах</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Теми оформлення</h3>
+                    <p class="feature-description">Темна та світла теми для комфортного використання</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title">У цифрах</h2>
+                <p class="section-subtitle">Реальна статистика платформи</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="stat-number" id="totalMovies">0</div>
+                    <div class="stat-label">Фільмів</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="stat-number" id="totalBooks">0</div>
+                    <div class="stat-label">Книг</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="stat-number" id="totalMedia">0</div>
+                    <div class="stat-label">Всього медіа</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title">Розвиток</h2>
+                <p class="section-subtitle">Ключові етапи створення платформи</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Q2 2025</div>
+                        <h3 class="timeline-title">Розробка</h3>
+                        <p class="timeline-description">Початок розробки платформи та створення базового функціоналу</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Q3 2025</div>
+                        <h3 class="timeline-title">Запуск</h3>
+                        <p class="timeline-description">Повноцінний запуск з усіма основними функціями та вдосконаленнями</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2 class="section-title">Команда</h2>
+                <p class="section-subtitle">Люди, що стоять за проектом</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="team-name">Дiдик Богдан</h3>
+                    <div class="team-role">Головний розробник та засновник</div>
+                    <p class="team-description">Відповідає за технічну реалізацію, розвиток платформи та всі аспекти проекту</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-film"></i> Медіа-каталог</h4>
+                    <p>Сучасна платформа для управління вашою медіа-бібліотекою</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <a href="index.html">Головна</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">Про систему</a>
+                    <a href="contact.html">Контакти</a>
+                    <a href="help.html">Допомога</a>
+                    <a href="profile.html">Профіль</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <a href="mailto:info@mediacatalog.com">b.diduk@e-u.edu.ua</a>
+                    <a href="tel:+380001234567">+38 (099) 742-82-85</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Медіа-каталог. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/about.js"></script>
+</body>
+</html>

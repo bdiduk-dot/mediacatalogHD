@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="uk" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - Медіа-каталог</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+    <div class="modal" id="imageUploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Завантажити обкладинку</h2>
+                <button class="modal-close" id="closeImageUploadModal">&times;</button>
+            </div>
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Перетягніть зображення сюди</h3>
+                    <p>або</p>
+                    <button type="button" class="btn btn-outline" id="selectImageBtn">Обрати файл</button>
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                </div>
+                <div class="upload-preview" id="uploadPreview" style="display: none;">
+                    <img id="previewImage" src="" alt="Preview">
+                    <div class="preview-actions">
+                        <button type="button" class="btn btn-danger" id="cancelUpload">Скасувати</button>
+                        <button type="button" class="btn btn-success" id="confirmUpload">Використати</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="apiSearchModal">
+        <div class="modal-content xlarge">
+            <div class="modal-header">
+                <h2 class="modal-title" id="apiSearchModalTitle">Пошук через API</h2>
+                <button class="modal-close" id="closeApiSearchModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container" style="margin-bottom: 2rem;">
+                    <div class="search-input-container" style="flex: 1;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" id="apiSearchInput" placeholder="Введіть назву фільму або книги...">
+                    </div>
+                    <button class="btn btn-primary" id="apiSearchBtn">
+                        <i class="fas fa-search"></i>
+                        Пошук
+                    </button>
+                </div>
+                <div class="api-search-results" id="apiSearchResults">
+                    <div class="search-initial-state">
+                        <i class="fas fa-search"></i>
+                        <span>Введіть запит для пошуку фільмів чи книг</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="tagsManagementModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-tags"></i>
+                    Управління тегами
+                </h2>
+                <button class="modal-close" id="closeTagsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-plus"></i>
+                        Додати новий тег
+                    </div>
+                    <div class="form-group">
+                        <div class="tags-input-compact">
+                            <input type="text" class="form-input" id="newTagInput" placeholder="Введіть назву тега...">
+                            <button class="btn btn-primary btn-sm" id="addNewTagBtn">
+                                <i class="fas fa-plus"></i> Додати
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-star"></i>
+                        Популярні теги
+                    </div>
+                    <div class="compact-tags-grid" id="popularTagsGrid">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-tags"></i>
+                        Всі теги
+                        <span class="tags-count" id="allTagsCount">(0)</span>
+                    </div>
+                    <div class="compact-tags-grid" id="allTagsGrid">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-section-title">
+                        <i class="fas fa-check"></i>
+                        Обрані теги
+                        <span class="tags-count" id="selectedTagsCount">(0)</span>
+                    </div>
+                    <div class="selected-tags-compact" id="selectedTagsCompact">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="clearAllTagsBtn">
+                        <i class="fas fa-times"></i> Очистити всі
+                    </button>
+                    <button type="button" class="btn btn-primary" id="applyTagsBtn">
+                        <i class="fas fa-check"></i> Застосувати
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-film"></i>
+                    <span>Медіа-каталог</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Головна</span>
+                    </a>
+                    <a href="catalog.html" class="nav-link active">
+                        <i class="fas fa-th-large"></i>
+                        <span>Каталог</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Про систему</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-address-book"></i>
+                        <span>Контакти</span>
+                    </a>
+                    <a href="help.html" class="nav-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Допомога</span>
+                    </a>
+                    <a href="profile.html" class="nav-link">
+                        <i class="fas fa-user"></i>
+                        <span>Профіль</span>
+                    </a>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-filter"></i>
+                <span class="sidebar-logo">Фільтри</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-filter="all">
+                    <div class="filter-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <div class="filter-content">
+                        <span class="filter-title">Вся колекція</span>
+                        <span class="filter-count" id="countAll">0</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-link" data-filter="movie">
+                    <div class="filter-icon movie">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="filter-content">
+                        <span class="filter-title">Фільми</span>
+                        <span class="filter-count" id="countMovies">0</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-link" data-filter="book">
+                    <div class="filter-icon book">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="filter-content">
+                        <span class="filter-title">Книги</span>
+                        <span class="filter-count" id="countBooks">0</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-link" data-filter="favorites">
+                    <div class="filter-icon favorite">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="filter-content">
+                        <span class="filter-title">Улюблені</span>
+                        <span class="filter-count" id="countFavorites">0</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-link" data-filter="high-rating">
+                    <div class="filter-icon rating">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="filter-content">
+                        <span class="filter-title">Високий рейтинг</span>
+                        <span class="filter-count" id="countHighRating">0</span>
+                    </div>
+                </a>
+                <a href="#" class="sidebar-link" data-filter="watched">
+                    <div class="filter-icon watched">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="filter-content">
+                        <span class="filter-title">Переглянуті</span>
+                        <span class="filter-count" id="countWatched">0</span>
+                    </div>
+                </a>
+            </nav>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title-compact">
+                    <span>Теги</span>
+                    <button class="btn-tags-management" id="manageTagsBtn" title="Керування тегами">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+                <div class="compact-tags-container">
+                    <div class="compact-tags-scroll" id="compactTagsScroll">
+                    </div>
+                    <div class="compact-tags-more" id="compactTagsMore">
+                        <button class="btn-more-tags" id="showMoreTagsBtn">
+                            <i class="fas fa-ellipsis-h"></i>
+                            <span>Більше тегів</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title"></div>
+                <div class="api-search-buttons">
+                    
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title" id="pageTitle">Медіа-каталог</h1>
+                    <p class="page-subtitle" id="pageSubtitle">Всі ваші улюблені фільми та книги в одному місці</p>
+                </div>
+                <div class="actions">
+                    <button class="btn btn-primary" id="addMediaBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Додати медіа</span>
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-outline dropdown-toggle" id="importExportBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>Імпорт/Експорт</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" id="exportBtn">
+                                <i class="fas fa-download"></i>
+                                Експорт JSON
+                            </a>
+                            <a href="#" class="dropdown-item" id="importBtn">
+                                <i class="fas fa-upload"></i>
+                                Імпорт даних
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-tags-filter" id="quickTagsFilter" style="display: none;">
+                <div class="quick-tags-header">
+                    <span class="quick-tags-title">Обрані теги:</span>
+                    <button class="btn-clear-tags" id="clearQuickTagsBtn">
+                        <i class="fas fa-times"></i> Очистити
+                    </button>
+                </div>
+                <div class="quick-tags-list" id="quickTagsList"></div>
+            </div>
+
+            <section class="search-section">
+                <div class="search-header">
+                    <h2 class="search-title">Пошук медіа</h2>
+                    <div class="search-controls">
+                        <div class="search-info" id="searchInfo">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Натисніть Enter для пошуку через API</span>
+                        </div>
+                        <button class="btn btn-outline" id="advancedSearchBtn">
+                            <i class="fas fa-sliders-h"></i>
+                            Розширений пошук
+                        </button>
+                    </div>
+                </div>
+                <div class="search-container">
+                    <div class="search-input-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" id="searchInput" 
+                               placeholder="Пошук фільмів, книг, режисерів, авторів, тегів...">
+                        <button class="clear-search" id="clearSearch" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button class="voice-search" id="voiceSearchBtn" title="Голосовий пошук">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="btn btn-primary" id="quickSearchBtn">
+                        <i class="fas fa-bolt"></i>
+                        Швидкий пошук
+                    </button>
+                </div>
+                <div class="search-category-info" id="searchCategoryInfo">
+                    <i class="fas fa-info-circle"></i>
+                    <span id="searchCategoryText">Пошук буде виконуватись у всій колекції</span>
+                </div>
+                <div class="advanced-search" id="advancedSearch" style="display: none;">
+                    <div class="advanced-filters">
+                        <div class="form-group">
+                            <label class="form-label">Рік від</label>
+                            <input type="number" class="form-input" id="yearFrom" placeholder="1980">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Рік до</label>
+                            <input type="number" class="form-input" id="yearTo" placeholder="2024">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Рейтинг від</label>
+                            <input type="number" class="form-input" id="ratingFrom" min="0" max="10" step="0.1" placeholder="7.0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Теги</label>
+                            <input type="text" class="form-input" id="searchTags" placeholder="драма, комедія, фентезі">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="media-section">
+                <div class="section-header">
+                    <h2 class="section-title" id="collectionTitle">
+                        <i class="fas fa-heart"></i>
+                        <span>Моя колекція</span>
+                    </h2>
+                    <div class="view-controls">
+                        <button class="view-toggle active" data-view="grid" title="Сітка">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button class="view-toggle" data-view="list" title="Список">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="media-container">
+                    <div class="media-grid" id="mediaGrid">
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fas fa-inbox"></i>
+                            </div>
+                            <h3 class="empty-title">Медіа не знайдено</h3>
+                            <p class="empty-description">Спробуйте змінити фільтри або додати нове медіа</p>
+                            <button class="btn btn-primary" id="emptyAddBtn">
+                                <i class="fas fa-plus"></i> Додати медіа
+                            </button>
+                        </div>
+                    </div>
+                    <div class="media-list" id="mediaList" style="display: none;"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="addMediaModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 class="modal-title">Додати нове медіа</h2>
+                <button class="modal-close" id="closeAddModal">&times;</button>
+            </div>
+            <form id="addMediaForm">
+                <div class="form-group">
+                    <label class="form-label">Тип медіа *</label>
+                    <select class="form-select" name="type" id="mediaType" required>
+                        <option value="">Оберіть тип</option>
+                        <option value="movie">Фільм</option>
+                        <option value="book">Книга</option>
+                    </select>
+                </div>
+                <div id="movieFields" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Назва фільму *</label>
+                        <input type="text" class="form-input" name="movieTitle" placeholder="Введіть назву фільму">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Режисер</label>
+                        <input type="text" class="form-input" name="director" placeholder="Введіть ім'я режисера">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Тривалість (хв)</label>
+                        <input type="number" class="form-input" name="duration" placeholder="Тривалість у хвилинах">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Трейлер (URL YouTube)</label>
+                        <input type="url" class="form-input" name="trailer" placeholder="https://www.youtube.com/watch?v=...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Актори</label>
+                        <input type="text" class="form-input" name="actors" placeholder="Через кому">
+                    </div>
+                </div>
+                <div id="bookFields" style="display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Назва книги *</label>
+                        <input type="text" class="form-input" name="bookTitle" placeholder="Введіть назву книги">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Автор *</label>
+                        <input type="text" class="form-input" name="author" placeholder="Введіть ім'я автора">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Кількість сторінок</label>
+                        <input type="number" class="form-input" name="pages" placeholder="Кількість сторінок">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Жанр</label>
+                        <input type="text" class="form-input" name="genre" placeholder="Жанр книги">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ISBN</label>
+                        <input type="text" class="form-input" name="isbn" placeholder="ISBN номер">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Рік випуску *</label>
+                        <input type="number" class="form-input" name="year" placeholder="Рік випуску" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Рейтинг *</label>
+                        <input type="number" class="form-input" name="rating" min="0" max="10" step="0.1" placeholder="0-10" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Теги</label>
+                    <div class="tags-input-compact-form">
+                        <input type="text" class="form-input" id="tagsInputCompact" placeholder="Введіть тег та натисніть Enter...">
+                        <button type="button" class="btn btn-outline btn-sm" id="openTagsModalBtn">
+                            <i class="fas fa-tags"></i> Обрати теги
+                        </button>
+                    </div>
+                    <div class="selected-tags-form" id="selectedTagsForm"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Опис *</label>
+                    <textarea class="form-textarea" name="description" placeholder="Опишіть медіа..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Обкладинка</label>
+                    <div class="cover-upload">
+                        <div class="cover-preview" id="coverPreview">
+                            <i class="fas fa-image"></i>
+                            <span>Попередній перегляд</span>
+                        </div>
+                        <div class="cover-actions">
+                            <button type="button" class="btn btn-outline" id="uploadCoverBtn">
+                                <i class="fas fa-upload"></i>
+                                Завантажити
+                            </button>
+                            <input type="url" class="form-input" name="cover" placeholder="Або вставте URL зображення" id="coverUrl">
+                            <div class="api-icons">
+                                <div class="api-icon tmdb">
+                                    <i class="fab fa-imdb"></i>
+                                    <span>TMDB</span>
+                                </div>
+                                <div class="api-icon google-books">
+                                    <i class="fab fa-google"></i>
+                                    <span>Google Books</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="cancelAdd">Скасувати</button>
+                    <button type="submit" class="btn btn-primary">Додати</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="mediaDetailsModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 class="modal-title" id="detailsTitle">Деталі медіа</h2>
+                <button class="modal-close" id="closeDetailsModal">&times;</button>
+            </div>
+            <div class="media-details" id="mediaDetailsContent">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal view-all-modal" id="viewAllModal">
+        <div class="modal-content xlarge">
+            <div class="view-all-header">
+                <h2 class="view-all-title">Вся колекція</h2>
+                <div class="view-all-controls">
+                    <select class="form-select" id="viewAllSort">
+                        <option value="date-added">Дата додавання</option>
+                        <option value="title">Назва</option>
+                        <option value="year">Рік</option>
+                        <option value="rating">Рейтинг</option>
+                    </select>
+                    <button class="modal-close" id="closeViewAllModal">&times;</button>
+                </div>
+            </div>
+            <div class="view-all-content">
+                <div class="view-all-grid" id="viewAllGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-film"></i> Медіа-каталог</h4>
+                    <p>Сучасна платформа для управління вашою медіа-бібліотекою</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <a href="index.html">Головна</a>
+                    <a href="catalog.html">Каталог</a>
+                    <a href="about.html">Про систему</a>
+                    <a href="contact.html">Контакти</a>
+                    <a href="help.html">Допомога</a>
+                    <a href="profile.html">Профіль</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <a href="mailto:b.diduk@e-u.edu.ua">b.diduk@e-u.edu.ua</a>
+                    <a href="tel:+380997428285">+38 (099) 742-82-85</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Медіа-каталог. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/catalog.js"></script>
+</body>
+</html>
